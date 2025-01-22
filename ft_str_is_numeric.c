@@ -1,0 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sengel <sengel@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/22 14:12:58 by sengel            #+#    #+#             */
+/*   Updated: 2025/01/22 14:37:43 by sengel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+#include <ctype.h>
+
+int ft_str_is_numeric(char *str){
+
+    int hasDigit = 0;
+    int hasNumeric = 0;
+
+    while(*str != '\0'){
+
+        if(isdigit(*str)){
+           hasDigit = 1;
+        }
+
+        else{
+          hasNumeric = 1;
+        }
+        str++;
+    }
+if (hasDigit == 1){
+    write(1, "1\n", 2);
+
+}
+if (hasNumeric == 1){
+    write(1, "0\n", 2);
+
+}
+return 0;
+}
+
+
+int main(){
+
+    char str[20] = "123398726328";
+    
+    ft_str_is_numeric(str);
+
+
+    return 0;
+
+}
