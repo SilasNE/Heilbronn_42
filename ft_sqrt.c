@@ -1,48 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr2.c                                       :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sengel <sengel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 15:30:08 by sengel            #+#    #+#             */
-/*   Updated: 2025/01/28 09:54:24 by sengel           ###   ########.fr       */
+/*   Created: 2025/01/28 15:00:03 by sengel            #+#    #+#             */
+/*   Updated: 2025/01/28 15:43:24 by sengel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stdio.h>
 
-#include<unistd.h>
-
-int ft_putnbr(int nb){
-
-    char c;
-
-    if(nb < 0){
-
-        write(1, "-", 1);
-        nb = -nb;
-
+int ft_sqrt(int nb) {
+    if (nb < 0) {
+        return 0;
     }
 
-    if(nb > 9){
+    int x = nb;
+    int y = 1;
 
-        ft_putnbr(nb / 10);
-
+    while (x > y) {
+        x = (x + y) / 2;
+        y = nb / x;
     }
 
-    c = (nb % 10) + '0';
-
-    write(1, &c , 1);
-
-    return nb;
-
+    if (x * x == nb) {
+        return x;
+    } else {
+        return 0;
+    }
 }
 
-int main(){
-
- int number = 42;
-
-    ft_putnbr(number);
-    
+int main() {
+    int nb = 81;
+    int resultat = ft_sqrt(nb);
+    printf("Das Resultat ist: %d\n", resultat);
     return 0;
 }

@@ -1,48 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr2.c                                       :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sengel <sengel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 15:30:08 by sengel            #+#    #+#             */
-/*   Updated: 2025/01/28 09:54:24 by sengel           ###   ########.fr       */
+/*   Created: 2025/01/28 14:07:11 by sengel            #+#    #+#             */
+/*   Updated: 2025/01/28 14:31:05 by sengel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include<unistd.h>
+#include<stdio.h>
 
-int ft_putnbr(int nb){
+int ft_iterative_power(int nb, int power){
 
-    char c;
+    int result;
 
-    if(nb < 0){
+    result = 1;
 
-        write(1, "-", 1);
-        nb = -nb;
-
+    if(power <= 0){
+        return (0);
     }
 
-    if(nb > 9){
-
-        ft_putnbr(nb / 10);
-
+    if (power == 0) {
+        return 1;
     }
 
-    c = (nb % 10) + '0';
+    while(power > 0){
 
-    write(1, &c , 1);
+        result *= nb;
+        power--;
+    }
 
-    return nb;
-
+    return result;
 }
+
 
 int main(){
 
- int number = 42;
+    int nb = 2;
 
-    ft_putnbr(number);
-    
+    int power = 3;
+
+    int resultat = ft_iterative_power(nb, power);
+
+    printf("Das Resultat: %d\n", resultat);
+
     return 0;
 }

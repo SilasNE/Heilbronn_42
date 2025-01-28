@@ -1,48 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr2.c                                       :+:      :+:    :+:   */
+/*   ft_iterative_functional.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sengel <sengel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 15:30:08 by sengel            #+#    #+#             */
-/*   Updated: 2025/01/28 09:54:24 by sengel           ###   ########.fr       */
+/*   Created: 2025/01/28 11:41:31 by sengel            #+#    #+#             */
+/*   Updated: 2025/01/28 14:05:31 by sengel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include<unistd.h>
+#include<stdio.h>
 
-int ft_putnbr(int nb){
 
-    char c;
+int ft_iterative_factorial(int nb){
+
+    int result;
+
+    result = 1;
 
     if(nb < 0){
-
-        write(1, "-", 1);
-        nb = -nb;
-
+        return(0);
     }
 
-    if(nb > 9){
-
-        ft_putnbr(nb / 10);
-
+    if(nb == 0 || nb == 1){
+        return(1);
     }
 
-    c = (nb % 10) + '0';
+    if(nb > 1){
 
-    write(1, &c , 1);
+        while(nb != 0){
+        result *= nb;
+        nb--;
+        }
+     }
 
-    return nb;
-
+    return result;
 }
+
+
 
 int main(){
 
- int number = 42;
+    int nb = 5;
 
-    ft_putnbr(number);
-    
+    int result = ft_iterative_factorial(nb);
+
+    printf("Die Zahl ist: %d\n", result);
+
     return 0;
 }

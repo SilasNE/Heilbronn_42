@@ -1,48 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr2.c                                       :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sengel <sengel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 15:30:08 by sengel            #+#    #+#             */
-/*   Updated: 2025/01/28 09:54:24 by sengel           ###   ########.fr       */
+/*   Created: 2025/01/28 15:44:19 by sengel            #+#    #+#             */
+/*   Updated: 2025/01/28 15:58:35 by sengel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include<unistd.h>
+#include<stdio.h>
 
-int ft_putnbr(int nb){
+int ft_is_prime(int nb){
 
-    char c;
-
-    if(nb < 0){
-
-        write(1, "-", 1);
-        nb = -nb;
-
+    if(nb <= 1){
+        return 0;
     }
 
-    if(nb > 9){
-
-        ft_putnbr(nb / 10);
-
+    if(nb > 1){
+        
     }
 
-    c = (nb % 10) + '0';
-
-    write(1, &c , 1);
-
-    return nb;
-
+    return result;
 }
+
 
 int main(){
 
- int number = 42;
+    nb = 7;
 
-    ft_putnbr(number);
-    
+    int resultat = ft_is_prime(nb);
+
+    printf("Resultat: %d\n", resultat);
+
     return 0;
 }

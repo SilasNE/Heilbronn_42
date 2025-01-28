@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr2.c                                       :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sengel <sengel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 15:30:08 by sengel            #+#    #+#             */
-/*   Updated: 2025/01/28 09:54:24 by sengel           ###   ########.fr       */
+/*   Created: 2025/01/28 14:32:00 by sengel            #+#    #+#             */
+/*   Updated: 2025/01/28 15:43:11 by sengel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include<unistd.h>
 
-int ft_putnbr(int nb){
+#include <unistd.h>
+#include <stdio.h>
 
-    char c;
+int ft_fibonacci(int index){
 
-    if(nb < 0){
 
-        write(1, "-", 1);
-        nb = -nb;
-
-    }
-
-    if(nb > 9){
-
-        ft_putnbr(nb / 10);
+    if (index < 0) {
+        return -1;
 
     }
 
-    c = (nb % 10) + '0';
+    if(index == 0){
+        return 0;
+    }
 
-    write(1, &c , 1);
+    
+    if (index == 1) {
+        return 1; 
+     }
 
-    return nb;
-
+     return ft_fibonacci(index - 1) + ft_fibonacci(index - 2);
 }
+
+
 
 int main(){
 
- int number = 42;
+    int index = 5;
 
-    ft_putnbr(number);
-    
+    int resultat = ft_fibonacci(index);
+
+    printf("Das Resultat ist: %d\n", resultat);  
+
     return 0;
 }
